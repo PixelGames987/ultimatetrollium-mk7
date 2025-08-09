@@ -1,6 +1,8 @@
 # ultimatetrollium-mk7
 A collection of simple bash scripts for the wifi pineapple mk7 made to simplify wifi pentesting using ssh.
 
+The wardriving mapping tool was not made by me: https://github.com/w84death/wardriving-mapping-tool
+
 How to setup?
 ```
 opkg update
