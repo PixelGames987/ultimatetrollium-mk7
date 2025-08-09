@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #202124; /* Dark background */
+    color: #e8eaed; /* Light text color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px; /* Adjust as needed */
+    width: 100%;
+}
+
+.card {
+    background-color: #2e3032; /* Darker gray for the card */
+    border: 1px solid #424242; /* Subtle border */
+    border-radius: 8px;
+    padding: 48px 40px 36px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.google-logo {
+    width: 75px; /* Adjust size as seen in screenshot */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #e8eaed;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #bdc1c6;
+    margin-bottom: 24px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 13px 15px;
+    background-color: #3e4042;
+    border: 1px solid #5f6368;
+    border-radius: 4px;
+    color: #e8eaed;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #8ab4f8; /* Google blue on focus */
+    box-shadow: 0 0 0 1px #8ab4f8;
+}
+
+/* Placeholder styling to mimic Google's floating label */
+.input-group input::placeholder {
+    color: transparent; /* Hide default placeholder */
+}
+
+.input-group label {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    color: #bdc1c6;
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background-color: transparent; /* Ensure label doesn't block background */
+    padding: 0 2px;
+}
+
+/* Animate label when input is focused or has content */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: #8ab4f8;
+    background-color: #2e3032; /* Match card background to appear 'floating' */
+}
+
+.forgot-link, .create-account-link, .learn-more {
+    color: #8ab4f8; /* Google blue for links */
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    text-align: left; /* Align links to the left inside the card */
+    margin-top: -10px; /* Pull up a bit for forgot link */
+    margin-bottom: 24px;
+    width: fit-content; /* Only take space for text */
+}
+
+.forgot-link:hover, .create-account-link:hover, .learn-more:hover {
+    text-decoration: underline;
+}
+
+.info-text {
+    font-size: 14px;
+    color: #bdc1c6;
+    text-align: left;
+    margin-bottom: 36px;
+}
+
+.info-text .learn-more {
+    display: inline; /* Keep 'learn more' inline */
+    margin: 0;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.button.primary {
+    background-color: #8ab4f8; /* Google blue */
+    color: #202124; /* Dark text on blue button */
+    font-weight: 500;
+}
+
+.button.primary:hover {
+    background-color: #a6caff; /* Lighter blue on hover */
+}
+
+.create-account-link {
+    font-weight: 500;
+    margin: 0; /* Override previous margin */
+    padding: 8px 0;
+}
+
+/* Password page specific styles */
+.email-display {
+    display: flex;
+    align-items: center;
+    background-color: #3e4042;
+    border: 1px solid #5f6368;
+    border-radius: 16px; /* Pill shape */
+    padding: 6px 12px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #e8eaed;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.email-display .user-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background-color: #bdc1c6; /* Placeholder for user avatar */
+}
+
+.email-display .dropdown-arrow {
+    margin-left: 8px;
+    color: #bdc1c6;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: -10px; /* Adjust spacing */
+    margin-bottom: 24px;
+    text-align: left;
+    padding-left: 2px; /* Align with input label */
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none; /* Hide default checkbox */
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #5f6368;
+    border-radius: 2px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    margin-right: 10px;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #8ab4f8;
+    border-color: #8ab4f8;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '\2713'; /* Checkmark symbol */
+    font-size: 14px;
+    color: #202124;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    color: #bdc1c6;
+    cursor: pointer;
+}
+
+
+/* Footer styles */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    font-size: 12px;
+    color: #bdc1c6;
+    padding-top: 10px;
+}
+
+.footer .dropdown {
+    cursor: pointer;
+}
+
+.footer .dropdown:hover {
+    color: #e8eaed;
+}
+
+.footer .footer-links a {
+    color: #bdc1c6;
+    text-decoration: none;
+    margin-left: 16px;
+}
+
+.footer .footer-links a:hover {
+    text-decoration: underline;
+    color: #e8eaed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .card {
+        padding: 30px 20px;
+    }
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .footer .footer-links {
+        margin-left: 0;
+    }
+    .footer .footer-links a {
+        margin: 0 8px;
+    }
+}
