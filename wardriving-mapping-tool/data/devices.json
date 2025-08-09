@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "name": "Vulnerable AP #1",
+    "information": "Default WPA password: 12345678",
+    "deviceType": "WiFi AP",
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "iconType": "wifi"
+  },
+  {
+    "id": "2",
+    "name": "EM4100 Reader",
+    "information": "Default access code: 0000",
+    "deviceType": "EM4100",
+    "latitude": 40.7150,
+    "longitude": -74.0080,
+    "iconType": "gate"
+  },
+  {
+    "id": "3",
+    "name": "Unsecured Camera",
+    "information": "Default login: admin/admin",
+    "deviceType": "IP Camera",
+    "latitude": 40.7110,
+    "longitude": -74.0030,
+    "iconType": "red"
+  }
+]

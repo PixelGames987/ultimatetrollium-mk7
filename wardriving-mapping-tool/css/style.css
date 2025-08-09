@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #0a0a10;
+    --sidebar-bg: #121218;
+    --text-color: #e0e0e0;
+    --neon-blue: #00b4d8;
+    --neon-pink: #f72585;
+    --neon-green: #39ff14;
+    --neon-purple: #bc00dd;
+    --accent-color: var(--neon-green);
+    --border-color: #333340;
+    --input-bg: #1c1c24;
+    --header-shadow: 0 0 8px var(--accent-color);
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+.sidebar {
+    width: 300px;
+    padding: 15px;
+    background: var(--sidebar-bg);
+    overflow-y: auto;
+    height: 100%;
+    border-right: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1000;
+}
+
+.sidebar-hidden .sidebar {
+    transform: translateX(-300px);
+}
+
+.sidebar-header {
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#sidebar-toggle {
+    position: absolute;
+    left: 300px;
+    bottom: 16px;
+    background: var(--sidebar-bg);
+    color: var(--accent-color);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    z-index: 1001;
+    border: 1px solid var(--accent-color);
+    border-left: none;
+    transition: left 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-hidden #sidebar-toggle {
+    left: 0;
+}
+
+#sidebar-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-hidden #sidebar-toggle i {
+    transform: rotate(180deg);
+}
+
+#map {
+    flex: 1;
+    height: 100%;
+    background-color: #111;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar-hidden #map {
+    margin-left: -300px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    text-shadow: var(--header-shadow);
+    animation: glitch 3s infinite;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+    display: flex;
+    align-items: center;
+}
+
+h2 i {
+    margin-right: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    border-radius: 0;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 15px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-family: 'Share Tech Mono', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+#devices-list {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.device-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.device-item:before {
+    content: '>';
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+
+.device-item:hover {
+    background: rgba(57, 255, 20, 0.1);
+    border-left: 3px solid var(--accent-color);
+}
+
+.export-controls {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.device-info-popup {
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    padding: 10px;
+}
+
+.device-info-popup h3 {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.device-info-popup .device-type {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--neon-blue);
+}
+
+.device-info-popup .device-data {
+    white-space: pre-wrap;
+    font-family: 'Share Tech Mono', monospace;
+    background: rgba(10, 10, 16, 0.8);
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 12px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.icon-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.icon-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    width: calc(33% - 6px);
+    transition: all 0.2s ease;
+}
+
+.icon-option i {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.icon-option span {
+    font-size: 12px;
+}
+
+.icon-option:hover {
+    border-color: var(--accent-color);
+}
+
+.icon-option.selected {
+    background-color: rgba(57, 255, 20, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Leaflet map styling overrides */
+.leaflet-container {
+    background: #050505;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+}
+
+.leaflet-popup-close-button {
+    color: var(--accent-color) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(10, 10, 16, 0.7) !important;
+    color: #777;
+}
+
+.leaflet-control-zoom a {
+    background: var(--sidebar-bg) !important;
+    color: var(--accent-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--input-bg) !important;
+}
+
+.custom-map-icon {
+    filter: drop-shadow(0 0 3px var(--accent-color));
+}
+
+/* Animation for cyberpunk element */
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--neon-pink), -0.05em -0.025em 0 var(--neon-blue);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--neon-pink), -0.05em -0.025em 0 var(--neon-blue);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--neon-pink), 0.025em 0.025em 0 var(--neon-blue);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--neon-pink), 0.025em 0.025em 0 var(--neon-blue);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--neon-pink), 0.05em 0 0 var(--neon-blue);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--neon-pink), 0.05em 0 0 var(--neon-blue);
+    }
+    100% {
+        text-shadow: -0.025em 0 0 var(--neon-pink), -0.025em -0.025em 0 var(--neon-blue);
+    }
+}

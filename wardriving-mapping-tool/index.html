@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="cyberpunk-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardriving Mapping Tool</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="sidebar-toggle">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-satellite-dish"></i> W4rDriving M4pper</h1>
+            </div>
+            
+            <div class="device-controls">
+                <h2><i class="fas fa-plus-circle"></i> Add New Device</h2>
+                <form id="device-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceType">Device Type:</label>
+                        <input type="text" id="deviceType" placeholder="e.g. EM4100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="information">Information:</label>
+                        <textarea id="information" placeholder="Default keys, vulnerabilities, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Icon:</label>
+                        <div class="icon-selector">
+                            <div class="icon-option" data-icon="blue">
+                                <i class="fa fa-map-marker" style="color: blue;"></i>
+                                <span>Blue</span>
+                            </div>
+                            <div class="icon-option" data-icon="red">
+                                <i class="fa fa-map-marker" style="color: red;"></i>
+                                <span>Red</span>
+                            </div>
+                            <div class="icon-option" data-icon="orange">
+                                <i class="fa fa-map-marker" style="color: orange;"></i>
+                                <span>Orange</span>
+                            </div>
+                            <div class="icon-option" data-icon="green">
+                                <i class="fa fa-map-marker" style="color: green;"></i>
+                                <span>Green</span>
+                            </div>
+                            <div class="icon-option" data-icon="wifi">
+                                <i class="fa fa-wifi"></i>
+                                <span>WiFi</span>
+                            </div>
+                            <div class="icon-option" data-icon="gate">
+                                <i class="fa fa-door-open"></i>
+                                <span>Gate</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="selected-icon" value="red">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="latitude">Latitude:</label>
+                        <input type="number" id="latitude" step="0.000001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude:</label>
+                        <input type="number" id="longitude" step="0.000001" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="add-device">Add Device</button>
+                        <button type="button" id="use-current-location">Use Current Location</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="device-list">
+                <h2><i class="fas fa-list"></i> Devices</h2>
+                <ul id="devices-list"></ul>
+                <div class="export-controls">
+                    <button id="export-json"><i class="fas fa-download"></i> Export</button>
+                    <button id="import-json"><i class="fas fa-upload"></i> Import</button>
+                    <input type="file" id="import-file" accept=".json" style="display:none;">
+                </div>
+            </div>
+        </div>
+        
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
