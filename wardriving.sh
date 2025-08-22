@@ -34,9 +34,9 @@ if ! netstat -tulnp | grep -q 'tcp.*:2947.*LISTEN.*gpsd'; then
 fi
 echo "gpsd is listening on port 2947."
 
-echo "Waiting for 3D GPS fix (up to 30 seconds)..."
+echo "Waiting for 3D GPS fix (up to 60 seconds)..."
 FIX_FOUND=0
-TIMEOUT_SECONDS=30
+TIMEOUT_SECONDS=60
 
 ( gpspipe -w | grep -qm 1 '"mode":3' ) &
 GPSPIPE_PID=$!
@@ -84,7 +84,7 @@ echo "Setting wifi mode..."
 
 # Check if tmux is installed
 if ! command -v tmux &> /dev/null; then
-    echo "ERROR: tmux is not installed. Please install tmux."
+    echo "ERROR: tmux is not installed. You need to install tmux for this script to work."
     echo "e.g., opkg update; opkg install tmux"
     kill "$PID_GPSD" 2>/dev/null
     exit 1
